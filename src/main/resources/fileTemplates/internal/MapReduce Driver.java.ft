@@ -1,0 +1,39 @@
+package fileTemplates.internal;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class ${NAME}Driver {
+    public static void main(String[] args) throws Exception {
+        // TODO: configure hadoop
+        System.setProperty("hadoop.tmp.dir", "");
+        System.setProperty("hadoop.home.dir", "");
+
+        Configuration conf = new Configuration();
+        Job job = Job.getInstance(conf, "${NAME}Job");
+
+        job.setJarByClass(${NAME}Driver.class);
+        job.setMapperClass(${NAME}Mapper.class);
+        job.setReducerClass(${NAME}Reducer.class);
+
+        // TODO: specify output types
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+
+        // TODO: specify input and output DIRECTORIES (not files)
+        FileInputFormat.setInputPaths(job, new Path("input"));
+        FileOutputFormat.setOutputPath(job, new Path("output"));
+
+        FileSystem fs = FileSystem.get(conf);
+        if (fs.exists(new Path("output")))
+            fs.delete(new Path("output"), true);
+
+        if (!job.waitForCompletion(true))
+            return;
+    }
+}
