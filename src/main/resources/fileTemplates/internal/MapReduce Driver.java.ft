@@ -10,9 +10,8 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class ${NAME}Driver {
     public static void main(String[] args) throws Exception {
-        // TODO: configure hadoop
-        System.setProperty("hadoop.tmp.dir", "");
-        System.setProperty("hadoop.home.dir", "");
+        // System.setProperty("hadoop.tmp.dir", "");
+        // System.setProperty("hadoop.home.dir", "");
 
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "${NAME}Job");
@@ -20,6 +19,7 @@ public class ${NAME}Driver {
         job.setJarByClass(${NAME}Driver.class);
         job.setMapperClass(${NAME}Mapper.class);
         job.setReducerClass(${NAME}Reducer.class);
+        job.setCombinerClass(${NAME}Reducer.class);
 
         // TODO: specify output types
         job.setOutputKeyClass(Text.class);
@@ -33,7 +33,6 @@ public class ${NAME}Driver {
         if (fs.exists(new Path("output")))
             fs.delete(new Path("output"), true);
 
-        if (!job.waitForCompletion(true))
-            return;
+        job.waitForCompletion(true);
     }
 }

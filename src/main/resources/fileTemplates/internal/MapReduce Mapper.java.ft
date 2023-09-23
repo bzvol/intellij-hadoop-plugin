@@ -6,9 +6,9 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 public class ${NAME}Mapper extends Mapper<LongWritable, Text, Text, Text> {
-	private Text empty = new Text("");
+	private final Text value = new Text("");
 	
 	public void map(LongWritable ikey, Text ivalue, Context context) throws IOException, InterruptedException {
-		context.write(ivalue, empty);
+		context.write(ivalue, value);
 	}
 }
