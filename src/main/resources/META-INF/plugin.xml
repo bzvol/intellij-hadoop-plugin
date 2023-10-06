@@ -30,8 +30,11 @@
     </extensions>
 
     <actions>
-        <action id="CreateJavaMapReduceFile" class="me.bzvol.hadoopplugin.CreateJavaMapReduceFileAction">
+        <action id="CreateKotlinMapReduceFile" class="me.bzvol.hadoopplugin.templates.CreateKotlinMapReduceFileAction">
             <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile" />
+        </action>
+        <action id="CreateJavaMapReduceFile" class="me.bzvol.hadoopplugin.templates.CreateJavaMapReduceFileAction">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="CreateKotlinMapReduceFile" />
         </action>
     </actions>
 </idea-plugin>

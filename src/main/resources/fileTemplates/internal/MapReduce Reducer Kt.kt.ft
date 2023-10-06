@@ -1,10 +1,10 @@
-package fileTemplates.internal
+package ${PACKAGE_NAME}
 
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Reducer
 import java.io.IOException
 
-class ${NAME}Reducer : Reducer<Text, Text, Text, Text>() {
+class ${NAME} : Reducer<Text, Text, Text, Text>() {
     private val value = Text("")
 
     @Throws(IOException::class, InterruptedException::class)

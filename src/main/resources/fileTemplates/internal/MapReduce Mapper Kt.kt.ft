@@ -1,11 +1,11 @@
-package fileTemplates.internal
+package ${PACKAGE_NAME}
 
 import org.apache.hadoop.io.LongWritable
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Mapper
 import java.io.IOException
 
-class ${NAME}Mapper : Mapper<LongWritable, Text, Text, Text>() {
+class ${NAME} : Mapper<LongWritable, Text, Text, Text>() {
     private val value = Text("")
 
     @Throws(IOException::class, InterruptedException::class)

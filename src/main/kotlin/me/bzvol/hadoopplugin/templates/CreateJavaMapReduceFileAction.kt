@@ -1,4 +1,4 @@
-package me.bzvol.hadoopplugin
+package me.bzvol.hadoopplugin.templates
 
 import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog

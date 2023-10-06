@@ -1,4 +1,4 @@
-package fileTemplates.internal
+package ${PACKAGE_NAME}
 
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.FileSystem
@@ -8,7 +8,8 @@ import org.apache.hadoop.mapreduce.Job
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat
 
-class ${NAME}Driver {
+object ${NAME} {
+    @JvmStatic
     fun main(args: Array<String>) {
         // System.setProperty("hadoop.tmp.dir", "")
         // System.setProperty("hadoop.home.dir", "")
